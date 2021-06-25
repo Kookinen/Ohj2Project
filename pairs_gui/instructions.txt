@@ -1,0 +1,58 @@
+ * Programmer
+ * Name: Joni Koskinen
+ * Student number: H291631
+ * User id: cqjoko
+ * E-mail: joni.e.koskinen@tuni.fi
+
+Game instructions:
+Program executes a pairs game where there is a variable amount of cards and players. At first player is asked for the amount of cards and players 
+and then player names. After that the game begins. Every round the player in turn clicks two cards open. If they are pair, the player gets two 
+points, continues their turn and cards are deleted from the board, if not, player in turn changes and the cards stay on the board but they are once 
+again hidden. Game ends when all pairs are found. The player has also an option to start a new game or quit game while playing and at the end of the 
+game. While game is on scores are not shown but instead all found cards are visible in a scoreboard under the card founders name. At the end of the 
+game scores are shown too.
+
+Game design:
+
+Cards
+Program starts by initializing random number generator and asking the card amount in the init_card_amount_input. Card amount is limited to 30 and 
+the program checks if the amount is not even and if its negative or over 30. If the requirements are not met, program prints out an error message. 
+After getting the user input, cards and the "gameboard" are initialized in the init_empty_cards method. At this point cards are still disabled 
+because game hasn't started yet. Then the card images (which I made myself) are initialized in the fill_cards method. I decided to implement the 
+cards system with two different vectors. One has the card buttons and the other the images in a struct form so that I can compare two different cards.
+At first I made this game with only letters so I did it as it was recommended in the instructions and afterwards it would have been to big of a job to
+change so I stuck with the vector implementation.
+
+Players
+After cards the program needs player amount. Required widgets are created in init_player_amount_input. Player amount is limited to 4 and the program 
+checks the input just like with the cards. From there we go to handle_player_amount_button_click where lineEdits are created to get the player 
+names. After the user clicks confirm, the program goes to handle_name_confirm_ button_click where player names are saved. Player names can be 
+anything except empty so I don't have any check there other than the check for length. If they are too long though, the program modifies the name to 
+a shorter version. At this point the cards become enabled, scoreboard gets set in the set_up_scoreboard method and the game begins.
+
+Turnig a card
+When a card is clicked, handle_card_button_click slot is called. In there the program compares the click location to the card location and if it
+matches and the card hasn't been "turned" yet, the card gets "turned". When clicked, the image on the button changes. When not "turned", it has the 
+default backside image (also made by me) and it changes on-click into the animal image that has the same index as the button on their respective 
+vectors. If there are two cards visible, Qtimer calls to "wait" slot. In the wait slot if the two cards are pairs, they get deleted and the person 
+in turn gets a point. To avoid segmentation errors, the buttons and the pictures get erased from the vectors and to avoid memory errors, the buttons 
+get deleted from their memory slot too. If pairs are not found, backside image is restored and the turn changes. The card visibility time is set to 
+one second.
+
+Game end
+At the wait slot the program checks if the card vector is empty. If it is, then victory method is called and the game ends. Victory method figures 
+out the winner and creates a label on the screen to declare the winner. Scoreboard is set up in the show_scores method and gameboard is deleted. At 
+this point the player has two options, quit game or start a new one. If game is quit, every memory slot get deleted and the program shuts down. If
+new game is picked, every memory slot still gets deleted but this time the init_card_amount_input is called and the cycle starts over.
+
+Player Class
+I used the player class to save player names and scores.
+
+ADDITIONAL FEATURES IN THE GAME
+
+-Variable amount of players and the player amount is requested.
+-User can name players
+-Situation in game is graphically presented in a form of card piles in a QGraphicsView
+-After the game or during it, game can be reset without restarting the whole program
+-Card backsides have an image (same image in every card)
+-Cards have an actual image instead of letters in their "imageside".

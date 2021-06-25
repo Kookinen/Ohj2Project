@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="back.png">Resources/back.png</file>
+        <file alias="monkey.png">Resources/monkey.png</file>
+        <file alias="horse.png">Resources/horse.png</file>
+        <file alias="mouse.png">Resources/mouse.png</file>
+        <file alias="snake.png">Resources/snake.png</file>
+        <file alias="bear.png">Resources/bear.png</file>
+        <file alias="fox.png">Resources/fox.png</file>
+        <file alias="giraffe.png">Resources/giraffe.png</file>
+        <file alias="cat.png">Resources/cat.png</file>
+        <file alias="dog.png">Resources/dog.png</file>
+        <file alias="platypus.png">Resources/platypus.png</file>
+        <file alias="panda.png">Resources/panda.png</file>
+        <file alias="panther.png">Resources/panther.png</file>
+        <file alias="raccoon.png">Resources/raccoon.png</file>
+        <file alias="pidgeon.png">Resources/pidgeon.png</file>
+        <file alias="bunny.png">Resources/bunny.png</file>
+    </qresource>
+</RCC>
