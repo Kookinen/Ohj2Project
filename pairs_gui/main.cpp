@@ -15,7 +15,6 @@
  *
  * Programmer
  * Name: Joni Koskinen
- * Student number: H291631
  * User id: cqjoko
  * E-mail: joni.e.koskinen@tuni.fi
  */
